@@ -1,0 +1,48 @@
+/* ConnectionComponent styles */
+
+/* User card container */
+.user-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout */
+    gap: 20px;
+    margin-left: 20px;
+}
+
+
+/* User card styles */
+.user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.user-card img {
+    width: 80px; /* Adjust image size as needed */
+    height: 80px; /* Adjust image size as needed */
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-card h3 {
+    font-size: 14px; /* Adjust font size as needed */
+    margin-bottom: 5px;
+}
+
+.add-button {
+    background-color: #007bff; /* Blue color for button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}

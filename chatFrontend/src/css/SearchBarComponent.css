@@ -1,0 +1,39 @@
+/* SearchBarComponent.css */
+
+.searchBar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .searchInput {
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .searchIcon {
+    color: #007bff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .userList {
+    margin-top: 10px;
+  }
+  
+  .username {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .username:last-child {
+    border-bottom: none;
+  }
+  
+  .username:hover {
+    background-color: #f0f0f0;
+  }
+  
