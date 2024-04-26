@@ -1,6 +1,7 @@
 package com.example.chatBackend.Controller;
 
 
+import com.example.chatBackend.Service.UserStatusService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.chatBackend.Entity.User;
@@ -16,12 +17,14 @@ public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 
-    @Autowired
     private final UserRepository userRepository;
-    public LoginController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final UserStatusService userStatusService;
 
+    @Autowired
+    public LoginController(UserRepository userRepository, UserStatusService userStatusService) {
+        this.userRepository = userRepository;
+        this.userStatusService = userStatusService;
+    }
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User credentials) {
         User user = userRepository.findByUserName(credentials.getUserName());
@@ -30,12 +33,12 @@ public class LoginController {
         if (user != null && user.getPassword().equals(credentials.getPassword())) {
             // Log successful login attempt
 //            System.out.println("User logged in: " + credentials.getUserName());
+            userStatusService.setUserOnline(credentials.getUserName());
             return new ResponseEntity<>(credentials.getUserName(), HttpStatus.OK);
         } else {
             // Log failed login attempt
 //            System.out.println("Failed login attempt for user: " + credentials.getUsername());
             return new ResponseEntity<>("Incorrect username or password", HttpStatus.UNAUTHORIZED);
-        }
-    }
+ }
 }
-
+}

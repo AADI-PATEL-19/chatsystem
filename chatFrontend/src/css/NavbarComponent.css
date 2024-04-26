@@ -102,13 +102,15 @@
   } */
 
   .searchModal {
+    z-index: 99;
     position: absolute;
     height: auto;
-    width: 330px;
+    width: 430px;
     left: 25%;
     top:70px;
+    padding: 15px;
     color: #000000;
-    background-color: #e2e2e2;
+    background-color: #f6fdff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     /* Ensure the modal appears above other content */
@@ -121,12 +123,16 @@
   }
   
   .searchModal li {
+    position: relative;
     padding: 8px 16px;
+    /* display: flex; */
+    /* justify-items: center; */
+    /* padding: 10px; */
     cursor: pointer;
   }
   
   .searchModal li:hover {
-    background-color: #928f8f;
+    background-color: #75b6d7;
   }
   
   /* Optional: Add scrollbar for long lists */
@@ -137,7 +143,7 @@
   .addButton {
     background-color: #007bff; /* Blue color, you can change this to any color you prefer */
     color: #ffffff; /* White text color, you can change this to any color you prefer */
-    padding: 5px 10px; /* Adjust padding as needed */
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -148,7 +154,8 @@
     display: inline-block;
     transition: background-color 0.3s ease;
     position: absolute;
-    right: 70px; /* Adjust the position from the right as needed */
+    bottom: 13%;
+    right: 50px; /* Adjust the position from the right as needed */
   }
   
   .addButton:hover {

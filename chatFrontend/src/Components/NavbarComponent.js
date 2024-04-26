@@ -79,10 +79,23 @@ export const NavbarComponent = ({ handleAddPeopleClick, handleLogoClick }) => {
             console.error('Error sending friend request:', error);
         });
 };
+const handleLogout=  ()=>{
+
+  axios.post('http://localhost:8000/logout',localStorage.getItem('username'))
+  .then(response=>{
+   
+  })
+  .catch(error => {
+    console.error('Error sending friend request:', error);
+});
+
+}
+
+
   return (
     <div className="navbar">
       <div className="logo" onClick={handleLogoClick}>
-        Logo
+        Chat
       </div>
       <div className="searchBar">
         <input
@@ -110,7 +123,7 @@ export const NavbarComponent = ({ handleAddPeopleClick, handleLogoClick }) => {
         </div>
         <div className="logout">
           <Link to="/">
-            <IoMdLogOut size={25} />
+            <IoMdLogOut size={25}  onClick={handleLogout}/>
           </Link>
         </div>
         <div className="profile">

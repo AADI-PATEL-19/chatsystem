@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { FaUser } from 'react-icons/fa';
 import '../css/ChatComponent.css';
 import chatImg from '../chatbot.jpg';
 import axios from 'axios';
 
 export default function ChatComponent() {
-  const [connectedUsers, setConnectedUsers] = useState([]);
+  const [connectedUsers, setConnectedUsers] = useState([{userName:"", status:false}]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [messageInput, setMessageInput] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
@@ -14,14 +15,25 @@ export default function ChatComponent() {
     const fetchConnectedUsers = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/user-contacts/${username}`);
-        const usernames = response.data.map(user => user.senderuser !== username ? user.senderuser : user.receiveruser);
-        setConnectedUsers(usernames);
+        const statusResponse = await axios.get("http://localhost:8000/user/status");
+      
+        console.log("response",response.data);
+        console.log("ststusResponse",statusResponse.data);
+        const usersWithStatus = response.data.map(user => {
+          const userStatus = statusResponse.data.find(status =>status.username.toLowerCase()===user.receiveruser.toLowerCase());
+          return {
+            userName: user.receiveruser,
+            status:userStatus?userStatus.online:false
+          };
+        });
+        setConnectedUsers(usersWithStatus);
+        console.log("connected users with status: ", usersWithStatus);
       } catch (error) {
         console.error('Error fetching connected users:', error);
       }
     };
     fetchConnectedUsers();
-  }, [username]);
+  }, [username,connectedUsers]);
 
   useEffect(() => {
     const fetchChatMessages = async () => {
@@ -41,14 +53,14 @@ export default function ChatComponent() {
     setSelectedUser(user);
   };
 
-  const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
+  // const getRandomColor = () => {
+  //   const letters = '0123456789ABCDEF';
+  //   let color = '#';
+  //   for (let i = 0; i < 6; i++) {
+  //     color += letters[Math.floor(Math.random() * 16)];
+  //   }
+  //   return color;
+  // };
 
   const sendMessage = async () => {
     if (messageInput.trim() !== '' && selectedUser !== null) {
@@ -78,16 +90,23 @@ export default function ChatComponent() {
   return (
     <div className="chat-container">
       <div className="contacts-panel">
-        <div className="contacts">Contacts</div>
+        <div className="contacts">Chats</div>
         <div className="contact-lists">
-          {connectedUsers.map((username, index) => (
+          {connectedUsers.map((user, index) => (
             <div
               className="contact-list"
-              style={{ backgroundColor: getRandomColor() }}
               key={index}
-              onClick={() => handleUserClick(username)}
-            >
-              {username}
+              onClick={() => handleUserClick(user.userName)}
+            > 
+             <div className='user-icon'> <FaUser  size={25}/> </div>
+             <div className='user-details'>
+  <p className='user-name'>{user.userName}</p>
+  <p className='status' style={{ color: user.status ? "green" : "red" }}>
+    {user.status ? 'Online' : 'Offline'}
+  </p>
+</div>
+
+             
             </div>
           ))}
         </div>
@@ -106,7 +125,6 @@ export default function ChatComponent() {
                   <div className='timestamp'>{new Date(message.timestamp).toLocaleString()}</div>
                 </div>
               ))}
-              </div>
 
               <div className="message-input">
                 <input
@@ -117,9 +135,13 @@ export default function ChatComponent() {
                 />
                 <button onClick={sendMessage}>Send</button>
               </div>
+              </div>
+
+  
             
           </div>
         ) : (
+          
           <div className="no-chat">
             <img src={chatImg} alt="No Chat Image" />
             <p>No chat selected</p>

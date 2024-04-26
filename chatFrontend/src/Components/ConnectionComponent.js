@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../css/ConnectionComponent.css';
+import { FaUser } from 'react-icons/fa';
 
 export default function ConnectionComponent() {
     const username = localStorage.getItem('username');
@@ -77,16 +78,19 @@ export default function ConnectionComponent() {
     };
 
     return (
-        <div>
-            <h2>ConnectionComponent</h2>
+        <div className='connections'>
+            
             <div className="user-cards">
                 {users.map((user, index) => (
                     <div key={user.id} className="user-card">
-                        <h3>Username: {user.userName}</h3>
-                        <h3>Nickname: {user.nickname}</h3>
-                        <h3>Date Of Birth: {user.dateOfBirth}</h3>
-                        <h3>About: {user.about}</h3>
-                        <h3>Country: {user.country}</h3>
+                        <div className='icon'>
+                        <p className='user-icons'><FaUser size={25}/></p>
+                        </div>
+                        <p>Username: {user.userName}</p>
+                        <p>Nickname: {user.nickname}</p>
+                        <p>Date Of Birth: {user.dateOfBirth}</p>
+                        <p>About: {user.about}</p>
+                        <p>Country: {user.country}</p>
                         <button
                             className="add-button"
                             onClick={() => handleAddButtonClick(user.userName, index)}
