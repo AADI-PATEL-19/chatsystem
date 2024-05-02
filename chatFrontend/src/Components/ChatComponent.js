@@ -21,7 +21,7 @@ export default function ChatComponent() {
           const userStatus = statusResponse.data.find(status => status.username.toLowerCase() === user.receiveruser.toLowerCase());
           return {
             userName: user.receiveruser,
-            status: userStatus ? userStatus.online : false
+            status: userStatus ? userStatus.online : true
           };
         });
         setConnectedUsers(usersWithStatus);

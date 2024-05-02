@@ -18,7 +18,7 @@ export default function RequestsComponent() {
             .catch(error => {
                 console.error('Error fetching friend requests data:', error);
             });
-    }, [username]); // Include username in the dependency array to fetch data when it changes
+    }, [username,pendingRequests]); // Include username in the dependency array to fetch data when it changes
 
     
     const handleRemoveRequest = (id) => {
