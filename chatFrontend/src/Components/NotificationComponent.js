@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { FaArrowLeft, FaBackward, FaEdit, FaPen } from 'react-icons/fa';
 import '../css/NotificationComponent.css';
 
 export default function NotificationComponent() {
@@ -11,12 +13,11 @@ export default function NotificationComponent() {
         axios.get(`http://localhost:8000/friend-requests/${username}`)
             .then(response => {
                 setFriendRequests(response.data); // Update state with fetched friend requests data
-                console.log(response.data);
             })
             .catch(error => {
                 console.error('Error fetching friend requests data:', error);
             });
-    }, [username]); // Include username in the dependency array to fetch data when it changes
+    }, [username, friendRequests]); // Include username in the dependency array to fetch data when it changes
 
     const handleAcceptRequest = (id) => {
         // Handle accepting the friend request with id
@@ -46,7 +47,12 @@ export default function NotificationComponent() {
 
     return (
         <div className="notification-container">
-            <h2>Friend Requests</h2>
+            <div className='notification-main'>
+                <h2>Friend Requests</h2>
+                <div className="back-button">
+                    <Link to="/home" className="back-link">< FaArrowLeft size={25}/></Link>
+                </div>
+            </div>
             <ul className="friend-requests-list">
                 {friendRequests.map(request => (
                     <li key={request.id}>
@@ -62,6 +68,7 @@ export default function NotificationComponent() {
                     </li>
                 ))}
             </ul>
+            {/* {pendingNotifications > 0 && <div className="notification-count">{pendingNotifications}</div>} */}
         </div>
     );
 };

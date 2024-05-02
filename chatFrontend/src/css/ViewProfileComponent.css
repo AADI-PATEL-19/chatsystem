@@ -1,79 +1,67 @@
+/* ViewProfileComponent.css */
+
 .view-profile-container {
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  text-align: center;
-
 }
 
-/* Profile box */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .profile-box {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-button-group {
+  justify-content: space-between;
+  position: absolute;
+  display: flex;
+  margin-left: 490px;
+  gap: 15px;
+}
+
+.faLeft, .faPen {
+  color: #007bff;
+  font-size: 24px;
+}
+
+.faLeft:hover, .faPen:hover {
+  color: #0056b3;
+}
+
+.view-profile-form {
   margin-top: 20px;
-  position: relative;
- 
 }
 
-/* Profile image
-.profile-image {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.profile-image img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid #fff;
-  display: block;
-  margin: 0 auto;
-} */
-
-.form-group {
+.profile-form-group {
   display: flex;
   margin-bottom: 15px;
+  align-items: center;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  margin-right: 20px;
+.profile-form-group label {
   font-weight: bold;
 }
 
-/* Button group */
-.button-group {
+.values { 
   position: absolute;
-  margin-top: 30px;
-}
-
-.faPen , .faLeft{
-  margin-left: 20px;
-  width: 200px;
-  height: 200px;
-  
-  color: rgb(0, 146, 251);
-  font-size: 25px;
-}
-.faLeft:hover , .faPen:hover
-{ 
-    
-  border: 1px solid rgb(0, 146, 251);
-  background-color: #000000;
-border-radius: 50%;
-
-
-
+  margin-left: 150px;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .button-group {
-    top: 40px;
-    right: 40px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-group a {
+    margin-bottom: 10px;
   }
 }

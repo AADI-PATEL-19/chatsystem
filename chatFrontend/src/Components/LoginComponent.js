@@ -3,8 +3,6 @@ import '../css/LoginComponent.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
-
 export default function LoginComponent() {
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState({
@@ -47,14 +45,14 @@ export default function LoginComponent() {
         <h2>Login</h2>
         <form onSubmit={(e) => onSubmit(e)} >
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">Username</label>
             <div className='password-input'>
               <input type="text" id="username" value={userName} name="userName" onChange={(e) => { onInputChange(e) }} placeholder="Enter username" />
             </div>
 
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password</label>
             <div className="password-input">
               <input
                 type={showPassword ? 'text' : 'password'}

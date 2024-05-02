@@ -22,6 +22,11 @@
   /* height:100vh; */
   /* display: block; */
   text-align: center;
+  overflow-y: auto; /* Enable vertical scrolling */
+  /* Hide scrollbar when there are fewer contacts */
+  scrollbar-width: none;
+  /* WebKit (Safari, Chrome) */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 .contact-lists{
@@ -115,7 +120,7 @@ align-items:center ;
 .chat-messages {
   position: relative;
   width: 100%;
-  height:100%;
+  height:80%;
   /* border-top: 1px solid red;
    */
    background-color: #dddfe1;
@@ -131,6 +136,7 @@ align-items:center ;
 /* Message bubble container */
 .message-bubble {
   display: flex;
+  flex-direction: row;
   align-items: center;
   background-color: rgb(84, 4, 4);
 
@@ -158,18 +164,14 @@ align-items:center ;
 }
 
 .message-input {
-  width: 98%;
+  width: 67%;
   position: absolute;
-
-  
   display: flex;
   align-items: center;
   padding: 10px;
-  /* padding-left: 10px;
-  padding-right: 0px; */
   margin-bottom: -25px;
   background-color: white;
- bottom: 88px;
+ bottom: 30px;
 }
 
 .message-input input[type="text"] {
@@ -218,12 +220,16 @@ align-items:center ;
   background-color: #007bff;
   color: white;
   align-self: flex-end;
+  display: flex;
+  padding: 5px;
 }
 
 .received {
   background-color: #dab8b8;
   color: black;
   align-self: flex-start;
+  display: flex;
+  padding: 5px;
 }
 
 .chat-messages {
@@ -236,7 +242,15 @@ align-items:center ;
 .timestamp {
   font-size: 0.8rem;
   color: #aaa;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 20px;
 }
+
+.read-status{
+  margin-top: 20px;
+}
+
 .chatUser{
   margin: 0px;
 }

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../css/ViewProfileComponent.css';
-import { FaArrowLeft, FaBackward, FaEdit, FaPen } from 'react-icons/fa';
-import { FaArrowAltCircleRight } from 'react-icons/fa';
-import { FaPencil } from 'react-icons/fa6';
+import { FaArrowLeft, FaPen } from 'react-icons/fa';
 export default function ViewProfile() {
   const [user, setUser] = useState({
     username: '',
@@ -32,35 +30,34 @@ export default function ViewProfile() {
     <div className="view-profile-container">
       <h2>Profile</h2>
       <div className="profile-box">
-        <div className="button-group">
-
+        <div className="profile-button-group">
           <Link to="/home"  className='faLeft' >< FaArrowLeft /></Link>
           <Link to="/editprofile" className='faPen'><FaPen /> </Link>
         </div>
         <div className="view-profile-form">
-          <div className="form-group">
+          <div className="profile-form-group">
             <label>Username:</label>
-            <div>{username}</div>
+            <div className='values'>{username}</div>
           </div>
-          <div className="form-group">
+          <div className="profile-form-group">
             <label>Nickname:</label>
-            <div>{user.nickname}</div>
+            <div className='values'>{user.nickname}</div>
           </div>
-          <div className="form-group">
+          <div className="profile-form-group">
             <label>Email:</label>
-            <div>{user.email}</div>
+            <div className='values'>{user.email}</div>
           </div>
-          <div className="form-group">
+          <div className="profile-form-group">
             <label>Date of Birth:</label>
-            <div>{user.dateOfBirth}</div>
+            <div className='values'>{user.dateOfBirth}</div>
           </div>
-          <div className="form-group">
+          <div className="profile-form-group">
             <label>Country:</label>
-            <div>{user.country}</div>
+            <div className='values'>{user.country}</div>
           </div>
-          <div className="form-group">
+          <div className="profile-form-group">
             <label>About:</label>
-            <div>{user.about}</div>
+            <div className='values'>{user.about}</div>
           </div>
         </div>
       </div>

@@ -5,7 +5,6 @@ import Home from "../Pages/Home";
 import ConnectionComponent from "../Components/ConnectionComponent";
 import ViewProfile from "../Users/ViewProfile";
 import EditProfile from "../Users/EditProfile";
-import SearchUser from "../Users/SearchUser";
 import NotificationComponent from "../Components/NotificationComponent";
 import RequestsComponent from "../Components/RequestsComponent";
 
@@ -43,11 +42,6 @@ export const router = createBrowserRouter([
       {
         path: "/editprofile",
         element: <EditProfile />
-      },
-      {
-        path: "/searchuser",
-        element: <SearchUser />
       }
-    
   ]);
    

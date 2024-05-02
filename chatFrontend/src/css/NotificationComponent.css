@@ -1,8 +1,31 @@
 .notification-container {
- background-color: rgb(197, 233, 253);
+    background-color: rgb(197, 233, 253);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 95vh;
+}
+
+.notification-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align items and create space between them */
+}
+
+.back-button {
+    margin-left: auto; /* Move the back button to the right */
+}
+
+.back-link {
+    text-decoration: none;
+    font-size: 16px;
+    transition: box-shadow 0.3s ease;
+}
+
+.request-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align items and create space between them */
 }
 
 .friend-requests-list {

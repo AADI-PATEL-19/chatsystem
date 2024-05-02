@@ -84,28 +84,28 @@ const onInputChange = (e)=>{
         <h2>Register</h2>
         <form  onSubmit={(e)=>onSubmit(e)} >
           <div className="form-group">
-            <label htmlFor="name">Username:</label>
+            <label htmlFor="name">Username</label>
             <div className="password-input">
             <input type="text" id="name" value={useName} name="userName" placeholder="Enter username" onChange={(e)=>onInputChange(e)} />
             </div>
             
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email</label>
             <div className="password-input">
-            <input type="email" id="email" value={email} name="email" placeholder="Enter your email" onChange={(e)=>onInputChange(e)} />
+            <input type="email" id="email" value={email} name="email" placeholder="Enter email" onChange={(e)=>onInputChange(e)} />
             </div>
             
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password</label>
             <div className="password-input">
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 value={password}
                 name="password"
-                placeholder="Enter your password"
+                placeholder="Enter password"
                 onChange={(e)=>{onInputChange(e)}}
               
                 // onChange={handlePasswordChange}
@@ -116,13 +116,13 @@ const onInputChange = (e)=>{
             </div>
           </div>
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <label htmlFor="confirmPassword">Confirm Password</label>
             <div className="password-input">
             <input
               type={showReEnterPassword ? 'text' : 'password'}
               id="confirmPassword"
               name="confirmPassword"
-              placeholder="Re-enter your password"
+              placeholder="Re-enter password"
               value={confirmPassword}
               onChange={(e) => {
                 handleConfirmPasswordChange(e);

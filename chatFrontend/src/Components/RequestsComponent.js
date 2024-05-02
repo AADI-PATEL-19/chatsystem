@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { FaArrowLeft, FaBackward, FaEdit, FaPen } from 'react-icons/fa';
 import '../css/NotificationComponent.css';
 
 export default function RequestsComponent() {
@@ -34,7 +36,12 @@ export default function RequestsComponent() {
 
     return (
         <div className="notification-container">
+            <div className='request-main'>
             <h2>Pending Requests</h2>
+            <div className="back-button">
+                <Link to="/home" className="back-link">< FaArrowLeft size={25}/></Link>
+            </div>
+            </div>
             <ul className="friend-requests-list">
                 {pendingRequests.map(request => (
                     <li key={request.id}>

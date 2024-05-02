@@ -51,6 +51,10 @@
     cursor: pointer;
     color: #333;
   }
+
+  .show-password-btn{
+    margin-right: 8px;
+  }
   
   .login-btn {
     width: 100%;

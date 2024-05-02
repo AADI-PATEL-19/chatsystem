@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -25,4 +26,8 @@ public class MessageService {
         messageRepository.save(message);
     }
 
+    public Message getMessageById(Long messageId) {
+        Optional<Message> optionalMessage = messageRepository.findById(messageId);
+        return optionalMessage.orElse(null);
+    }
 }

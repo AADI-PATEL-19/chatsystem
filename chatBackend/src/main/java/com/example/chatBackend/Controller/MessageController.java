@@ -42,4 +42,33 @@ public class MessageController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error sending message");
         }
     }
+
+
+    @PutMapping("/{senderUsername}/{messageId}")
+    public ResponseEntity<String> updateMessageReadStatus(
+            @PathVariable String senderUsername,
+            @PathVariable Long messageId) {
+        try {
+            // Get the message from the database
+            Message message = messageService.getMessageById(messageId);
+            if (message == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Message not found");
+            }
+
+            // Check if the senderUsername matches the sender of the message
+            if (!message.getSenderUsername().equals(senderUsername)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized access");
+            }
+
+            // Update the readStatus of the message
+            message.setReadStatus(true);
+            messageService.saveMessage(message); // Save the updated message
+
+            return ResponseEntity.ok("Message read status updated successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating message read status");
+        }
+    }
+
 }
